@@ -1,0 +1,21 @@
+title: Royal Ransomware Behavior Detected
+status: stable
+description: The Royal ransomware group emerged in early 2022 and has gained momentum since the middle of the year. Its ransomware, which the group deploys through different TTPs, has impacted multiple organizations across the globe. The group itself is suspected of consisting of former members of other ransomware groups, based on similarities researchers have observed between Royal ransomware and other ransomware operators.
+author: Aung Myo Khant
+references:
+    - https://www.cybereason.com/blog/royal-ransomware-analysis
+logsource:
+    category: process_access
+    product: windows
+detection:
+    selection:
+        Image|contains:
+            - 'vssadmin.exe'
+        CommandLine|contains:
+            - 'delete' 
+            - '/all' 
+            - '/quiet' 
+    condition: selection
+falsepositives:
+    - unknown
+level: medium
