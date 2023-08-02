@@ -1,0 +1,16 @@
+title: Defense Evasion Via Google AMP activity
+status: test
+description: Security researchers are warning of increased phishing activity that abuses Google Accelerated Mobile Pages (AMP) to bypass email security measures and get to inboxes of enterprise employees. Google AMP is an open-source HTML framework co-developed by Google and 30 partners to make web content load faster on mobile devices. 
+author: Aung Myo Khant
+references:
+    - https://www.bleepingcomputer.com/news/security/threat-actors-abuse-google-amp-for-evasive-phishing-attacks/
+logsource:
+    category: webserver
+    product: windows
+detection:
+    selection: 
+        c-uri-query|contains: '/amp/'
+    condition: selection
+falsepositives:
+    - some may seem legit
+level: medium
